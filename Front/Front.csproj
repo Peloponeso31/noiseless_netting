@@ -27,6 +27,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Assets\missing.png" />
+      <Resource Include="Assets\Missing.png" />
+
       <None Remove="Assets\imagenotfound.png" />
       <Resource Include="Assets\imagenotfound.png" />
     </ItemGroup>
