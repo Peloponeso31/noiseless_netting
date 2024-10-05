@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:Front"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:deepPage="clr-namespace:Front.Features.DeepPage"
-        xmlns:impactPage="clr-namespace:Front.Features.ImpactPage"
-        xmlns:Shallow="clr-namespace:Front.Features.ShallowPage"
         xmlns:EventDetails="clr-namespace:Front.Features.EventDetails"
         xmlns:listaEventos="clr-namespace:Front.Features.ListaEventos"
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -25,6 +22,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         <ui:TitleBar Name="TitleBar"/>
         <ui:NavigationView Grid.Row="1" x:Name="NavigationView" 
                            TitleBar="{Binding ElementName=TitleBar}"

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Front.Core.Services.BackendService;
+using Front.Core.Services.MiniSeedService;
 using Front.Core.Services.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,6 +27,7 @@ public partial class App : Application
 
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<IBackendService, BackendService>();
+        services.AddSingleton<IMiniSeedService, MiniSeedService>();
 
         return services.BuildServiceProvider();
     }
