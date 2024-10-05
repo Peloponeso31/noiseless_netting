@@ -6,17 +6,32 @@
         xmlns:local="clr-namespace:Front"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:EventDetails="clr-namespace:Front.Features.EventDetails"
+
+
+
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
         ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         WindowCornerPreference="Default"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <ui:TitleBar Title="WPF UI"/>
-            <ui:Card Margin="8">
-                <ui:Button Content="Lista de eventos" Icon="{ui:SymbolIcon Fluent24}" />
-            </ui:Card>
-        </StackPanel>
-    </Grid>
+        Title="MainWindow" 
+        WindowStartupLocation="CenterScreen"
+        Height="800" Width="1200" MinHeight="800" MinWidth="1200">
+     <StackPanel>
+        <ui:TitleBar Name="TitleBar"/>
+        <ui:NavigationView x:Name="NavigationView" 
+                           TitleBar="{Binding ElementName=TitleBar}"
+                           PaneDisplayMode="Top" 
+                           OpenPaneLength="200">
+            
+            <ui:NavigationView.MenuItems> 
+                <ui:NavigationViewItem Content="Event List"
+                                       Icon="{ui:SymbolIcon AppsList20}"
+                                       TargetPageType="{x:Type EventDetails:EventDetailsPage}"/>
+                
+                
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
+    </StackPanel>
+
 </ui:FluentWindow>
