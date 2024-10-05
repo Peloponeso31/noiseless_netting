@@ -9,15 +9,20 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-rc.1.24431.7" />
       <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
       <PackageReference Include="WPF-UI" Version="4.0.0-rc.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Core\" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Assets\Deep\" />
       <Folder Include="Assets\Impact\" />
       <Folder Include="Assets\Shallow\" />
-      <Folder Include="Core\Services\" />
       <Folder Include="Features\" />
     </ItemGroup>
 
