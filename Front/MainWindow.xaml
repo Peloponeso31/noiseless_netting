@@ -9,6 +9,7 @@
         xmlns:EventDetails="clr-namespace:Front.Features.EventDetails"
 
 
+
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
         ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -32,6 +33,5 @@
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
     </StackPanel>
+
 </ui:FluentWindow>
-
-

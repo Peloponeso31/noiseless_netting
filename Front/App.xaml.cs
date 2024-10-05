@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Front.Core.Services.BackendService;
 using Front.Core.Services.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +25,7 @@ public partial class App : Application
         var services = new ServiceCollection();
 
         services.AddSingleton<INavigationService, NavigationService>();
+        services.AddSingleton<IBackendService, BackendService>();
 
         return services.BuildServiceProvider();
     }

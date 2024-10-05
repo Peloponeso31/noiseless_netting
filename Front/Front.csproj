@@ -16,17 +16,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Core\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Assets\Deep\" />
       <Folder Include="Assets\Impact\" />
       <Folder Include="Assets\Shallow\" />
-      <Folder Include="Features\" />
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Assets\missing.png" />
+      <Resource Include="Assets\Missing.png" />
+
       <None Remove="Assets\imagenotfound.png" />
       <Resource Include="Assets\imagenotfound.png" />
     </ItemGroup>
