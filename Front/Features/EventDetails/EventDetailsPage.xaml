@@ -10,6 +10,9 @@
       ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
       ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Title="EventDetails" Height="auto" Width="auto">
+    <Page.DataContext>
+        <local:EventDetailsViewModel/>
+    </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -98,14 +101,16 @@
 
         </StackPanel>
 
-        <ui:ListView Grid.Row="1">
+        <ui:ListView Grid.Row="1"
+                     ItemsSource="{Binding Eventos}">
             <ui:ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
                 </ItemsPanelTemplate>
             </ui:ListView.ItemsPanel>
 
-            <ui:ListView.ItemTemplate>
+            <ui:ListView.ItemTemplate
+                >
                 <DataTemplate> <!--El patron -->
                     <StackPanel>
                         <ui:TextBlock

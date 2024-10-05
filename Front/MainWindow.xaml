@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:Front"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:EventDetails="clr-namespace:Front.Features.EventDetails"
-
+        xmlns:deepPage="clr-namespace:Front.Features.DeepPage"
+        xmlns:impactPage="clr-namespace:Front.Features.ImpactPage"
+        xmlns:Shallow="clr-namespace:Front.Features.ShallowPage"
 
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
@@ -25,8 +26,8 @@
             
             <ui:NavigationView.MenuItems> 
                 <ui:NavigationViewItem Content="Event List"
-                                       Icon="{ui:SymbolIcon AppsList20}"
-                                       TargetPageType="{x:Type EventDetails:EventDetailsPage}"/>
+                                       Icon="{ui:SymbolIcon Target16}"
+                                       TargetPageType="{x:Type deepPage:DeepPage}"/>
                 
                 
             </ui:NavigationView.MenuItems>
