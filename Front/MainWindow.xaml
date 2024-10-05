@@ -21,6 +21,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         <ui:TitleBar Name="TitleBar"/>
         <ui:NavigationView Grid.Row="1" x:Name="NavigationView" 
                            TitleBar="{Binding ElementName=TitleBar}"

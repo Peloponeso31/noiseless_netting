@@ -3,5 +3,5 @@
 public interface IBackendService
 {
     Task<string> Call(string arguments, string program);
-    string GetImageRoute(string imageName, string plotsDir);
+    string GetImageRoute(string imageName);
 }
