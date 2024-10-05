@@ -21,4 +21,9 @@
       <Folder Include="Features\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Assets\imagenotfound.png" />
+      <Resource Include="Assets\imagenotfound.png" />
+    </ItemGroup>
+
 </Project>
