@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Front.Core.Services.Navigation;
+using Front.Features.ListaEventos;
 using Microsoft.Extensions.DependencyInjection;
 using Wpf.Ui.Controls;
 
@@ -24,5 +25,11 @@ public partial class MainWindow
     public MainWindow()
     {
         InitializeComponent();
+        _navigationService.SetNavigationControl(NavigationView);
+    }
+
+    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+    {
+        _navigationService.Navigate(typeof(ListaEventosPage));
     }
 }

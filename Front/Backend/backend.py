@@ -1,5 +1,6 @@
 ﻿import argparse
-from obspy.core import read
+import utils as ut
+
 
 # Parser initializer
 parser = argparse.ArgumentParser(
@@ -12,13 +13,7 @@ parser.add_argument('--filename', required=True)
 parser.add_argument('--graphic', choices=['plot', 'spectrogram'])
 args = parser.parse_args()
 
-single_channel = read(args.filename)
-single_channel.plot()
+# Default values
+save_dir = r".\Front\Backend\plots"
 
-
-def main():
-    print(args.filename)
-
-
-if __name__ == '__main__':
-    main()
+ut.save_plot(args.filename, save_dir)
