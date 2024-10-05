@@ -13,4 +13,12 @@
       <PackageReference Include="WPF-UI" Version="4.0.0-rc.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Assets\Deep\" />
+      <Folder Include="Assets\Impact\" />
+      <Folder Include="Assets\Shallow\" />
+      <Folder Include="Core\Services\" />
+      <Folder Include="Features\" />
+    </ItemGroup>
+
 </Project>
