@@ -7,19 +7,23 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:EventDetails="clr-namespace:Front.Features.EventDetails"
-
-
-
+        xmlns:listaEventos="clr-namespace:Front.Features.ListaEventos"
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
         ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         WindowCornerPreference="Default"
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
-        Height="800" Width="1200" MinHeight="800" MinWidth="1200">
-     <StackPanel>
+        MinHeight="800" MinWidth="1200"
+        Loaded="MainWindow_OnLoaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <ui:TitleBar Name="TitleBar"/>
-        <ui:NavigationView x:Name="NavigationView" 
+        <ui:NavigationView Grid.Row="1" x:Name="NavigationView" 
                            TitleBar="{Binding ElementName=TitleBar}"
                            PaneDisplayMode="Top" 
                            OpenPaneLength="200">
@@ -27,11 +31,9 @@
             <ui:NavigationView.MenuItems> 
                 <ui:NavigationViewItem Content="Event List"
                                        Icon="{ui:SymbolIcon AppsList20}"
-                                       TargetPageType="{x:Type EventDetails:EventDetailsPage}"/>
-                
-                
+                                       TargetPageType="{x:Type listaEventos:ListaEventosPage}"/>
             </ui:NavigationView.MenuItems>
         </ui:NavigationView>
-    </StackPanel>
+    </Grid>
 
 </ui:FluentWindow>
