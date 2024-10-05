@@ -5,18 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Front.Features.ListaEventos"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:util="clr-namespace:Front.Core.Util"
       mc:Ignorable="d"
       ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
       ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Title="ListaEventosPage" Height="450" Width="800">
     
     <Page.DataContext>
-        <local:ListaEventosPage/>
+        <local:ListaEventosViewModel/>
     </Page.DataContext>
     
-    
-    
-    
+    <Page.Resources>
+        <util:OnlyFileName x:Key="OnlyFileName"/>
+    </Page.Resources>
   <Grid>
       <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/> <!-- Fila para el buscador -->
@@ -32,9 +33,15 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Top"/>
         
-        <ListView x:Name="ListaEventos"
-            Grid.Row="1"
-            Grid.Column="0"/>
+        <ui:ListView Grid.Row="1" ItemsSource="{Binding MiniSeeds}">
+            <ui:ListView.ItemTemplate>
+                <DataTemplate>
+                    <ui:Card>
+                        <ui:TextBlock Text="{Binding Converter={StaticResource OnlyFileName}}"/>
+                    </ui:Card>
+                </DataTemplate>
+            </ui:ListView.ItemTemplate>
+        </ui:ListView>
         
       
   </Grid>  
