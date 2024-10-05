@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Configuration;
+using System.Diagnostics;
 
 namespace Front.Core.Services.BackendService;
 
@@ -6,8 +7,10 @@ public class BackendService : IBackendService
 {
     public string Call(string program = "backend.py", string? arguments = null)
     {
+        // Process class doc:
+        // https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process?view=net-8.0
         Process process = new Process();
-        process.StartInfo.WorkingDirectory = "C:\\Users\\peloponeso\\RiderProjects\\Seismic\\Front\\Backend";
+        process.StartInfo.WorkingDirectory = ConfigurationManager.AppSettings["working_dir"];
         process.StartInfo.FileName = "python";
         
         process.StartInfo.Arguments = program;
