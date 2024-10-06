@@ -56,7 +56,10 @@ public partial class ListaEventosViewModel : ObservableObject
             {
                 return x.Contains("ELYSE", StringComparison.OrdinalIgnoreCase);
             }
-            return true; // Si no hay opción seleccionada o no coincide con "Luna" o "Marte", muestra todo
+            else
+            {
+                return true; // Si no hay opción seleccionada o no coincide con "Luna" o "Marte", muestra todo
+            }
         });
 
         DatosFiltrados = new ObservableCollection<string>(datosFiltrados); // Actualiza la lista filtrada
