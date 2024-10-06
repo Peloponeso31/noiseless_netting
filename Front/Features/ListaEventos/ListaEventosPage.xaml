@@ -18,9 +18,11 @@
     <Page.Resources>
         <util:OnlyFileName x:Key="OnlyFileName"/>
     </Page.Resources>
-  <Grid>
+   
+    
+    <Grid>
       <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/> <!-- Fila para el buscador -->
+          <RowDefinition Height="auto"/> <!-- Fila para el ComboBox -->
           <RowDefinition Height="*"/>    <!-- Fila para el ListView -->
       </Grid.RowDefinitions> 
       
@@ -50,8 +52,6 @@
                 </DataTemplate>
             </ui:ListView.ItemTemplate>
         </ui:ListView>
-        
-      
-  </Grid>  
 
+    </Grid>
 </Page>
