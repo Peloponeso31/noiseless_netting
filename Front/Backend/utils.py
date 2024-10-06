@@ -1,5 +1,6 @@
 import shutil
 import os
+import sys
 import numpy as np
 from sklearn.cluster import DBSCAN
 
@@ -16,10 +17,16 @@ def denoising_data(args):
     if not filename.endswith('.mseed'):
         return
 
+    paths = []
     create_directory('plots')
-    noisy_img = generate_plot(filename)
+    noisy_imgs = generate_plot(filename)
     filtered_file = load_and_process_mseed_files(filename)
-    return [noisy_img, filtered_file]
+    
+    for path in noisy_imgs:
+        paths.append(path)
+    paths.append(filtered_file)
+    
+    return paths
 
 
 #
@@ -89,13 +96,6 @@ def load_and_process_mseed_files(filename):
 
     return filter_file
 
-
-#
-#
-#
-#
-#
-
 def preprocess_trace(tr, freqmin=0.5, freqmax=None):
     nyquist_frequency = tr.stats.sampling_rate / 2
     if freqmax is None or freqmax >= nyquist_frequency:
@@ -106,13 +106,13 @@ def preprocess_trace(tr, freqmin=0.5, freqmax=None):
 
     return tr
 
-
+# No es legible.
 # Función para extraer características de una traza
 def extract_features(tr):
     max_amplitude = np.max(np.abs(tr.data))
     mean_frequency = np.mean(np.fft.rfftfreq(len(tr.data), d=1 / tr.stats.sampling_rate))
     energy = np.sum(tr.data ** 2)
-    entropy = -np.sum((tr.data * 2) * np.log(tr.data * 2 + 1e-10))
+    entropy = -np.sum((tr.data ** 2) * np.log(tr.data ** 2 + 1e-10))
     range_amplitude = np.ptp(tr.data)
     return [max_amplitude, mean_frequency, energy, entropy, range_amplitude]
 
@@ -126,25 +126,23 @@ def optimize_dbscan_params(features):
 
 # Función para guardar el archivo .mseed sin crear la gráfica
 def save_mseed_file(tr, filename):
-    base_path = f"{os.getcwd()}\\Resources\\"
-    filename = remove_extension(filename)
-    output_file = os.path.join(base_path, f"{filename}")
-    # Asegurarse de que los metadatos de la traza, incluida la tasa de muestreo, se mantengan al guardar el archivo .mseed
-    tr.write(output_file, format='MSEED')  # Los metadatos se preservan automáticamente
-    return output_file
+    name = os.path.splitext(os.path.basename(filename))[0]
+    new_filename = f'{os.getcwd()}\\plots\\{name}_denoised.png'
+    fig = tr.plot(show=False)
+    fig.savefig(new_filename)
+    return new_filename
 
 
 def generate_plot(filename):
     tr = read(filename)
-    filename = remove_extension(filename)
+    name = os.path.splitext(os.path.basename(filename))[0]
+    plot_filename = f'{os.getcwd()}\\plots\\{name}_plot.png'
+    spec_filename = f'{os.getcwd()}\\plots\\{name}_spectrogram.png'
 
-    plot_path = os.path.join(os.getcwd(), r'\plots', f"{filename}_plot.png")
-    spectrogram_path = os.path.join(os.getcwd(), r'\plots', f"{filename}_spectrogram.png")
-
-    tr.plot().savefig(plot_path)
-    tr.spectrogram().savefig(spectrogram_path)
-
-    return [plot_path, spectrogram_path]
+    plot = tr.plot(show=False, outfile=plot_filename)
+    spec = tr.spectrogram(show=False, outfile=spec_filename)
+    
+    return [plot_filename, spec_filename]
 
 
 def remove_extension(filename):
