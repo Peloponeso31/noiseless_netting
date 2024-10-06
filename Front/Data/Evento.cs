@@ -9,8 +9,9 @@ public partial class Evento: ObservableObject
         _eventname = eventname;
         _plottype = plottype;
         _plotimage = plotimage;
-        
     }
+
+    public Evento() { }
 
     [ObservableProperty] private string _eventname;
     [ObservableProperty] private string _plottype;

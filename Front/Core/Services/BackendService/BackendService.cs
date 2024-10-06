@@ -8,7 +8,7 @@ public class BackendService : IBackendService
 {
     private string workingDir = ConfigurationManager.AppSettings["working_dir"] ?? string.Empty;
     
-    public async Task<string> Call(string? arguments = null, string program = "backend.py")
+    public async Task<string> Call(string? arguments = null, string? program = "backend.py")
     {
         // Process class doc:
         // https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process?view=net-8.0

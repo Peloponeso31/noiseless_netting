@@ -13,16 +13,17 @@ def recreate_directory(directory_path):
     os.makedirs(directory_path)
 
 
-def save_plot(filename, save_dir):
+def save_plot(filename):
     if not filename.endswith('.mseed'):
         return
 
-    recreate_directory(save_dir)
+    base_path = f"{os.getcwd()}\\plots" 
+    #recreate_directory(base_path)
 
     single_channel = read(filename)
-    plot_path = os.path.join(save_dir, os.path.basename(filename) + '_plot.png')
+    plot_path = os.path.join(base_path, os.path.basename(filename) + '_plot.png')
     single_channel.plot(outfile=plot_path)
-    print(f"Plot saved to {plot_path}")
+    print(f"{plot_path}")
 
 
 def process_files(resource_dir, save_dir):
