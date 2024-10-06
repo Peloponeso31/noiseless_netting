@@ -39,8 +39,8 @@
             SelectedItem="{Binding OpcionSeleccionada, Mode=TwoWay}"/>
       
         
-        <ui:ListView Grid.Row="1"
-                     ItemsSource="{Binding MiniSeeds}"
+        <ui:ListView Grid.Row="1" 
+                     ItemsSource="{Binding DatosFiltrados}"
                      SelectedItem="{Binding MiniSeedSelected}"
                      MouseDoubleClick="Control_OnMouseDoubleClick">
             
