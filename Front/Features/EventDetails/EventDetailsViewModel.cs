@@ -17,6 +17,7 @@ public partial class EventDetailsViewModel :ObservableObject
    [ObservableProperty] private ObservableCollection<Evento> _eventos = Core.demo.ListaEventos.Eventos;
    [ObservableProperty] private string _nombreEvento;
    [ObservableProperty] private Evento _eventoPlot;
+   [ObservableProperty] private Evento _eventoSpectrogram;
 
    public EventDetailsViewModel()
    {
@@ -26,11 +27,18 @@ public partial class EventDetailsViewModel :ObservableObject
    private async void InitAsync()
    {
       NombreEvento = Path.GetFileNameWithoutExtension(_miniSeedService.GetCurrentFile());
-      var image = await _backendService.Call($"--filename {_miniSeedService.GetCurrentFile()}", "backend.py");
-      EventoPlot = new()
+      var imagePlot = await _backendService.Call($"--filename {_miniSeedService.GetCurrentFile()}", "backend.py");
+      
+      EventoPlot = new Evento
       {
-         Eventname = "Plot",
-         Plotimage = image
+         Eventname = "Plot sin filtro",
+         Plotimage = imagePlot
+      };
+      
+      EventoSpectrogram = new Evento
+      {
+         Eventname = "Espectrograma",
+         Plotimage = imagePlot
       };
    }
 }
