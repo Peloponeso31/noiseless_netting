@@ -13,6 +13,7 @@
     <Page.DataContext>
         <local:EventDetailsViewModel/>
     </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

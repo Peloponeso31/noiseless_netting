@@ -31,12 +31,10 @@ public class BackendService : IBackendService
         return output;
     }
 
-    public string GetImageRoute(string imageName, string plotsDir = "\\plots")
+    public string GetImageRoute(string imagePath)
     {
-        if (workingDir == String.Empty) return string.Empty;
-
-        return File.Exists(Path.Combine(workingDir, plotsDir + imageName)) ? 
-               Path.Combine(workingDir,  plotsDir + imageName) : 
-               new Uri("pack://application:,,,/Assets/Missing.png" + imageName).ToString();
+        return File.Exists(imagePath) ? 
+               imagePath : 
+               new Uri("pack://application:,,,/Assets/Missing.png").ToString();
     }
 }
