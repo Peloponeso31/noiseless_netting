@@ -19,6 +19,7 @@
       <Folder Include="Assets\Deep\" />
       <Folder Include="Assets\Impact\" />
       <Folder Include="Assets\Shallow\" />
+      <Folder Include="Backend\plots\" />
     </ItemGroup>
 
     <ItemGroup>

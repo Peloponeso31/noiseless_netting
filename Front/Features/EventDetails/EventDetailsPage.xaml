@@ -22,14 +22,13 @@
 
         <StackPanel>
 
-            <ui:TextBlock
-                TextAlignment="Center"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                FontSize="100"
-                Foreground="Honeydew"
-                FontStretch="Condensed"
-                Text="test">
+            <ui:TextBlock TextAlignment="Center"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          FontSize="30"
+                          Foreground="Honeydew"
+                          FontStretch="Condensed"
+                          Text="{Binding NombreEvento}">
             </ui:TextBlock>
 
             <Grid>
@@ -37,10 +36,14 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+                
+                
+                
                 <ui:TextBlock
                     TextAlignment="Center"
                     HorizontalAlignment="Stretch"
@@ -48,10 +51,8 @@
                     FontSize="60"
                     Foreground="Honeydew"
                     FontStretch="Condensed"
-
                     Grid.Column="0"
-
-                    Text="test">
+                    Text="{Binding EventoPlot.Eventname}">
                 </ui:TextBlock>
 
                 <ui:TextBlock
@@ -66,12 +67,13 @@
 
                     Text="test">
                 </ui:TextBlock>
+                
                 <ui:Image
                     Name="RawData"
                     Grid.Column="0"
 
                     Grid.Row="1"
-                    Source="/Assets/imagenotfound.png"
+                    Source="{Binding EventoPlot.Plotimage}"
                     Width="auto"
                     Height="auto"
                     MaxHeight="350"
