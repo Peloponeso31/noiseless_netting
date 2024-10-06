@@ -7,9 +7,12 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:front="clr-namespace:Front"
       mc:Ignorable="d"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
       ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-      Title="EventDetails" Height="auto" Width="auto">
+      d:DesignWidth="1024"
+      d:DesignHeight="768"
+      Title="EventDetails">
     <Page.DataContext>
         <local:EventDetailsViewModel/>
     </Page.DataContext>
@@ -21,124 +24,52 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-
             <ui:TextBlock TextAlignment="Center"
                           HorizontalAlignment="Stretch"
-                          VerticalAlignment="Stretch"
                           FontSize="30"
-                          Foreground="Honeydew"
-                          FontStretch="Condensed"
-                          Text="{Binding NombreEvento}">
-            </ui:TextBlock>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+                          Text="{Binding NombreEvento}"/>
+            <StackPanel>
+                <ui:Card Margin="5,5,5,0">
+                    <StackPanel>
+                        <ui:TextBlock Text="{Binding EventoPlot.Eventname}"
+                                      HorizontalAlignment="Stretch"
+                                      FontSize="25" />
+                        <ui:Image Source="{Binding EventoPlot.Plotimage}"
+                                  HorizontalAlignment="Stretch"
+                                  Stretch="Uniform"
+                                  CornerRadius="8"/>
+                    </StackPanel>
+                </ui:Card>
                 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                
-                
-                
-                <ui:TextBlock
-                    TextAlignment="Center"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    FontSize="60"
-                    Foreground="Honeydew"
-                    FontStretch="Condensed"
-                    Grid.Column="0"
-                    Text="{Binding EventoPlot.Eventname}">
-                </ui:TextBlock>
-
-                <ui:TextBlock
-                    TextAlignment="Center"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    FontSize="60"
-                    Foreground="Honeydew"
-                    FontStretch="Condensed"
-
-                    Grid.Column="1"
-
-                    Text="test">
-                </ui:TextBlock>
-                
-                <ui:Image
-                    Name="RawData"
-                    Grid.Column="0"
-
-                    Grid.Row="1"
-                    Source="{Binding EventoPlot.Plotimage}"
-                    Width="auto"
-                    Height="auto"
-                    MaxHeight="350"
-                    MaxWidth="500"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Stretch="UniformToFill"
-                    Margin="30">
-                </ui:Image>
-                <ui:Image
-                    Name="NewData"
-                    Grid.Column="1"
-
-                    Grid.Row="1"
-                    Source="/Assets/imagenotfound.png"
-                    Width="auto"
-                    Height="auto"
-                    MaxHeight="350"
-                    MaxWidth="500"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Stretch="UniformToFill"
-                    Margin="30" />
-
-
-            </Grid>
-
-
+                <ui:Card Margin="5,5,5,0">
+                    <StackPanel>
+                        <ui:TextBlock Text="{Binding EventoSpectrogram.Eventname}"
+                                      HorizontalAlignment="Stretch"
+                                      FontSize="25" />
+                        <ui:Image Source="{Binding EventoSpectrogram.Plotimage}"
+                                  HorizontalAlignment="Stretch"
+                                  Stretch="Uniform"
+                                  CornerRadius="8"/>
+                    </StackPanel>
+                </ui:Card>
+            </StackPanel>
         </StackPanel>
 
         <ui:ListView Grid.Row="1"
                      ItemsSource="{Binding Eventos}">
-            <ui:ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ui:ListView.ItemsPanel>
-
-            <ui:ListView.ItemTemplate
-                >
-                <DataTemplate> <!--El patron -->
-                    <StackPanel>
-                        <ui:TextBlock
-                            TextAlignment="Center"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            FontSize="60"
-                            Foreground="Honeydew"
-                            FontStretch="Condensed"
-                            Text="test">
-                        </ui:TextBlock>
-
-                        <ui:Image
-                            Name="RawData"
-                            Source="/Assets/imagenotfound.png"
-                            Width="auto"
-                            Height="auto"
-                            MaxHeight="350"
-                            MaxWidth="500"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Stretch="UniformToFill"
-                            Margin="30">
-                        </ui:Image>
-                    </StackPanel>
+            <ui:ListView.ItemTemplate>
+                <DataTemplate>
+                    <ui:Card Margin="5,5,5,0">
+                        <StackPanel>
+                            <ui:TextBlock Text="{Binding Eventname}"
+                                          HorizontalAlignment="Stretch"
+                                          FontSize="25" />
+                            <ui:Image Source="{Binding Plotimage}"
+                                      HorizontalAlignment="Stretch"
+                                      Stretch="Uniform"
+                                      CornerRadius="8"/>
+                        </StackPanel>
+                    </ui:Card>
                 </DataTemplate>
             </ui:ListView.ItemTemplate>
         </ui:ListView>

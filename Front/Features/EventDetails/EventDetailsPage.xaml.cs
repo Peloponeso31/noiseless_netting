@@ -7,6 +7,5 @@ public partial class EventDetailsPage : Page
     public EventDetailsPage()
     {
         InitializeComponent();
-        
     }
 }
