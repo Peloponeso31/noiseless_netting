@@ -8,7 +8,7 @@ public class BackendService : IBackendService
 {
     private string workingDir = ConfigurationManager.AppSettings["working_dir"] ?? string.Empty;
     
-    public async Task<string> Call(string? arguments = null, string? program = "backend.py")
+    public async Task<List<string>> Call(string? arguments = null, string? program = "backend.py")
     {
         // Process class doc:
         // https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process?view=net-8.0
@@ -24,11 +24,21 @@ public class BackendService : IBackendService
         process.StartInfo.UseShellExecute = false;
         process.StartInfo.CreateNoWindow = true;
         
+        var paths = new List<string>();
+        
+        process.OutputDataReceived += (sender, args) =>
+        {
+            if (!string.IsNullOrEmpty(args.Data))
+            {
+                paths.Add(args.Data);
+            }
+        };
+        
         process.Start();
-        var output = await process.StandardOutput.ReadToEndAsync();
+        process.BeginOutputReadLine();
         await process.WaitForExitAsync();
         
-        return output;
+        return paths;
     }
 
     public string GetImageRoute(string imagePath)

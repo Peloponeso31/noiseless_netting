@@ -27,7 +27,9 @@ public partial class EventDetailsViewModel :ObservableObject
    private async void InitAsync()
    {
       NombreEvento = Path.GetFileNameWithoutExtension(_miniSeedService.GetCurrentFile());
-      var imagePlot = await _backendService.Call($"--filename {_miniSeedService.GetCurrentFile()}", "backend.py");
+      var paths = await _backendService.Call($"--filename {_miniSeedService.GetCurrentFile()}", "backend.py");
+      var imagePlot = paths.FirstOrDefault(x => x.Contains("plot", StringComparison.OrdinalIgnoreCase));
+      var imageSpec = paths.FirstOrDefault(x => x.Contains("spec", StringComparison.OrdinalIgnoreCase));
       
       EventoPlot = new Evento
       {
@@ -38,7 +40,7 @@ public partial class EventDetailsViewModel :ObservableObject
       EventoSpectrogram = new Evento
       {
          Eventname = "Espectrograma",
-         Plotimage = imagePlot
+         Plotimage = imageSpec
       };
    }
 }

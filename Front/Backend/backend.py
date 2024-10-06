@@ -12,4 +12,5 @@ parser.add_argument('--filename', required=True)
 parser.add_argument('--graphic', choices=['plot', 'spectrogram'], nargs='+')
 args = parser.parse_args()
 
-ut.denoising_data(args)
+for path in ut.denoising_data(args):
+    print(path)

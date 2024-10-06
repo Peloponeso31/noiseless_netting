@@ -2,6 +2,6 @@
 
 public interface IBackendService
 {
-    Task<string> Call(string arguments, string? program);
+    Task<List<string>> Call(string arguments, string? program);
     string GetImageRoute(string imageName);
 }
