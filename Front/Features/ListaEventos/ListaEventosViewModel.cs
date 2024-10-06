@@ -58,7 +58,7 @@ public partial class ListaEventosViewModel : ObservableObject
             }
             else
             {
-                return true; // Si no hay opción seleccionada o no coincide con "Luna" o "Marte", muestra todo
+                return true; // Si no hay opción seleccionada o no coincide con "Luna" o "Marte", muestra completa
             }
         });
 
