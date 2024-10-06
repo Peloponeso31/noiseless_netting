@@ -11,7 +11,6 @@ def create_directory(directory_path):
         # Crear el nuevo directorio
         os.makedirs(directory_path)
 
-
 def denoising_data(args):
     filename = args.filename
     if not filename.endswith('.mseed'):

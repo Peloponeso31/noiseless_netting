@@ -13,4 +13,3 @@ parser.add_argument('--graphic', choices=['plot', 'spectrogram'], nargs='+')
 args = parser.parse_args()
 
 ut.denoising_data(args)
-

@@ -1,0 +1,147 @@
+<Page x:Class="Front.Features.EventDetails.EventDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Front.Features.EventDetails"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:front="clr-namespace:Front"
+      mc:Ignorable="d"
+      ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+      ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      Title="EventDetails" Height="auto" Width="auto">
+    <Page.DataContext>
+        <local:EventDetailsViewModel/>
+    </Page.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+
+            <ui:TextBlock TextAlignment="Center"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          FontSize="30"
+                          Foreground="Honeydew"
+                          FontStretch="Condensed"
+                          Text="{Binding NombreEvento}">
+            </ui:TextBlock>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                
+                
+                <ui:TextBlock
+                    TextAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    FontSize="60"
+                    Foreground="Honeydew"
+                    FontStretch="Condensed"
+                    Grid.Column="0"
+                    Text="{Binding EventoPlot.Eventname}">
+                </ui:TextBlock>
+
+                <ui:TextBlock
+                    TextAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    FontSize="60"
+                    Foreground="Honeydew"
+                    FontStretch="Condensed"
+
+                    Grid.Column="1"
+
+                    Text="test">
+                </ui:TextBlock>
+                
+                <ui:Image
+                    Name="RawData"
+                    Grid.Column="0"
+
+                    Grid.Row="1"
+                    Source="{Binding EventoPlot.Plotimage}"
+                    Width="auto"
+                    Height="auto"
+                    MaxHeight="350"
+                    MaxWidth="500"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Stretch="UniformToFill"
+                    Margin="30">
+                </ui:Image>
+                <ui:Image
+                    Name="NewData"
+                    Grid.Column="1"
+
+                    Grid.Row="1"
+                    Source="/Assets/imagenotfound.png"
+                    Width="auto"
+                    Height="auto"
+                    MaxHeight="350"
+                    MaxWidth="500"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Stretch="UniformToFill"
+                    Margin="30" />
+
+
+            </Grid>
+
+
+        </StackPanel>
+
+        <ui:ListView Grid.Row="1"
+                     ItemsSource="{Binding Eventos}">
+            <ui:ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ui:ListView.ItemsPanel>
+
+            <ui:ListView.ItemTemplate
+                >
+                <DataTemplate> <!--El patron -->
+                    <StackPanel>
+                        <ui:TextBlock
+                            TextAlignment="Center"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            FontSize="60"
+                            Foreground="Honeydew"
+                            FontStretch="Condensed"
+                            Text="test">
+                        </ui:TextBlock>
+
+                        <ui:Image
+                            Name="RawData"
+                            Source="/Assets/imagenotfound.png"
+                            Width="auto"
+                            Height="auto"
+                            MaxHeight="350"
+                            MaxWidth="500"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Stretch="UniformToFill"
+                            Margin="30">
+                        </ui:Image>
+                    </StackPanel>
+                </DataTemplate>
+            </ui:ListView.ItemTemplate>
+        </ui:ListView>
+
+    </Grid>
+</Page>
