@@ -74,8 +74,7 @@ public partial class ListaEventosViewModel : ObservableObject
 
         DatosFiltrados = new ObservableCollection<string>(datosFiltrados); // Actualiza la lista filtrada
     }
-}
-
+    
     [RelayCommand]
     private void OnMiniSeedClick()
     {
@@ -83,3 +82,6 @@ public partial class ListaEventosViewModel : ObservableObject
         _navigationService.Navigate(typeof(EventDetailsPage));
     }
 }
+
+   
+    
