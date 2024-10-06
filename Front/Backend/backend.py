@@ -1,7 +1,6 @@
 ﻿import argparse
 import utils as ut
 
-
 # Parser initializer
 parser = argparse.ArgumentParser(
     prog='Noiseless netting',
@@ -10,10 +9,8 @@ parser = argparse.ArgumentParser(
 
 # Valid arguments
 parser.add_argument('--filename', required=True)
-parser.add_argument('--graphic', choices=['plot', 'spectrogram'])
+parser.add_argument('--graphic', choices=['plot', 'spectrogram'], nargs='+')
 args = parser.parse_args()
 
-# Default values
-save_dir = r".\Front\Backend\plots"
+ut.denoising_data(args)
 
-ut.save_plot(args.filename, save_dir)
